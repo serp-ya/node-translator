@@ -3,13 +3,21 @@ const querystring = require('querystring');
 
 function translateThis(text) {
   const apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
+  let lang = 'ru-en';
+  
+  if (/[A-Za-z]/ig.test(text)) {
+    lang = 'en-ru';
+  }
+
   let URLParams = querystring.stringify({
     key: 'trnsl.1.1.20170924T220958Z.c68b126185f64636.0b53609cb4b3feffdcd9b68ab27384fa1c052cce',
     text: text,
-    lang: 'ru-en',
+    lang: lang,
     format: 'plain',
     options: 1
   });
+
+
 
   return new Promise((done, fail) => {
     https.get(apiUrl + '?' + URLParams, res => {

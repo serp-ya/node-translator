@@ -213,7 +213,7 @@
   </header>
   <form>
     <div class="input-section email-section">
-      <input id="requestInput" class="text">
+      <input id="requestInput" class="text" placeholder="Введите текст">
       <div id="submitBtn" class="animated-button" style="cursor: pointer"><span class="icon-paper-plane"><i class="fa fa-check"></i></span><span class="next-button email"><i class="fa fa-arrow-up"></i></span></div>
     </div>
   </form>
@@ -254,8 +254,8 @@
 
     function handleRequest(request) {
       request
-        .then(res => res.text())
-        .then(res => alert(res))
+        .then(res => res.json())
+        .then(res => alert('Перевод: ' + res.text))
         .catch(console.error);
     }
   </script>
